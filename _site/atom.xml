@@ -4,7 +4,7 @@
  <title>funccode</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2017-01-05T02:23:35+00:00</updated>
+ <updated>2017-01-06T02:40:51+00:00</updated>
  <author>
    <name>Christopher Fonseka</name>
    <uri>https://xmasrights.github.io</uri>
@@ -14,20 +14,10 @@
  
 
  <entry>
-   <title>SearchTreeKit</title>
-   <link href="http://localhost:4000/SearchTreeKit"/>
-   <id>http://localhost:4000/SearchTreeKit</id>
-   <updated>2017-01-05T00:00:00+00:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quasi maxime quas repudiandae nam id temporibus, at et non officiis consectetur voluptate deserunt officia minima placeat tempore illum asperiores quo assumenda praesentium? Facilis libero error ratione doloribus debitis delectus asperiores minima ab velit quam. Natus ea, vero totam recusandae autem,...</content>
- </entry>
-
- 
-
- <entry>
    <title>Welcome to funcCode</title>
    <link href="http://localhost:4000/Welcome"/>
    <id>http://localhost:4000/Welcome</id>
-   <updated>2017-01-01T00:00:00+00:00</updated>
+   <updated>2017-01-05T00:00:00+00:00</updated>
    <content type="html">&lt;p&gt;Hello there, and welcome to funcCode.&lt;/p&gt; &lt;p&gt;funcCode is a Swift programming blog that will guide you through the language one project at a time. This blog operates under the belief that the best way to learn how to program is to make as many mistakes as quickly as possible, and...</content>
  </entry>
 
