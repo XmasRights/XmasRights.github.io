@@ -29,6 +29,7 @@ $blue-color: #0BB3FC;
 html {
 	background-color: $background-color;
 	font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 	@media (min-width: 940px) {
 		font-size: 18px;
 	}
