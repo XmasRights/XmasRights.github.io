@@ -1,9 +1,41 @@
 ---
 title: Fibonacci, and Doing it Fast
 ---
-## Recursive
-Ah Fibonacci, that beautiful sequence next door that gives us a glimpse into the elegance that mathematics, nature, and even programming can have. The recursive implementation in Swift is a fantastic example of clear, and readable code:
+As a programmer, there are often moments when you have to question who is truly in charge in the computer-developer relationship. When a boring and repetitive task presents itself and you diligently proceed without question, I have to imagine your computer's laughter circuits are chuckling away with the satisfaction that they've managed to avoid another irritating endeavour.
 
+One of those tasks that I find myself doing over and over again when optimising code (or more likely figuring out why my code is so Goddamn slow) is calculating execution time. It's simple enough to write, copy, paste, print to console, and delete, over and over again, but it's not absurd to think that spending the 4 minutes to make something a bit more elegant might be in order.
+
+Thanks to closures in Swift this can be done in a very reusable way, with a syntax that doesn't make you want to stab programming textbooks with blunt objects.
+
+## Working out Execution Time
+{% highlight swift linenos %}
+func executionTime(function: ()->()) -> Measurement<UnitDuration>
+{
+    let start = DispatchTime.now()
+    function()
+    let end = DispatchTime.now()
+
+    let nanoseconds = end.uptimeNanoseconds - start.uptimeNanoseconds
+    let seconds     = Double(nanoseconds) / 1_000_000_000
+
+    return Measurement(value: seconds, unit: UnitDuration.seconds)
+}
+{% endhighlight %}
+
+With any luck, you'll never have to write that code again. From then on it's simply a case of:
+{% highlight swift linenos %}
+let time = executionTime {
+    print("Hello World")
+}
+
+let seconds = time.converted(to: .seconds)
+print("Printing Hello World takes \(seconds) seconds")
+{% endhighlight %}
+
+So now, let's put this code to the test, with my favourite number sequence: Fibonacci.
+
+## Fibonacci
+Ah Fibonacci, that beautiful sequence next door that gives us a glimpse into the elegance that mathematics, nature, and even programming can have. The recursive implementation in Swift is a fantastic example of clear, and readable code:
 {% highlight swift linenos %}
 func fibonacci (n: Int) -> Int
 {
@@ -17,11 +49,7 @@ func fibonacci (n: Int) -> Int
 
 That's it. Three little lines, and one of those most bad programmers don't even bother with.
 
-When you stick this in an Xcode Playground, and start messing about with numbers, something becomes very apparent: this is one slow function. Stick a 100 into it, and everything stops being fun.
-
-## Iterative
-A good step at this point would be to do some benchmarking to see precisely how poorly the recursive approach scales, but before we get to that, we could play around with the iterative approach:
-
+There's also the iterative approach, which is far less attractive:
 {% highlight swift linenos %}
 func fibonacci (n: Int) -> Int
 {
@@ -42,21 +70,35 @@ func fibonacci (n: Int) -> Int
 }
 {% endhighlight %}
 
-Another play around in Playground, and we see a huge speed improvement (admittedly at the cost of readability)
-
-## Timing Execution
-Eyeballing is one thing, but what if we wanted to know precisely how long each execution takes? Thanks to closures in Swift this can be done in a very reusable way, with a syntax that doesn't make you want to stab programming textbooks with blunt objects.
-
+Before proceeding, I'll neaten everything up by sticking it in a structure:
 {% highlight swift linenos %}
-func executionTime(function: ()->()) -> Measurement<UnitDuration>
+struct Fibonacci
 {
-    let start = DispatchTime.now()
-    function()
-    let end = DispatchTime.now()
+    public func recursive (n: Int) -> Int
+    {
+        precondition(n >= 0)
 
-    let nanoseconds = end.uptimeNanoseconds - start.uptimeNanoseconds
-    let seconds     = Double(nanoseconds) / 1_000_000_000
+        if (n == 0 || n == 1) { return 1 }
 
-    return Measurement(value: seconds, unit: UnitDuration.seconds)
+        return recursive(n: n-1) + recursive(n: n-2)
+    }
+
+    public func iterative (n: Int) -> Int
+    {
+        precondition(n >= 0)
+
+        if (n == 0 || n == 1) { return 1 }
+
+        var a = 1, b = 1
+
+        for _ in 1...(n - 1)
+        {
+            let c = b
+
+            b = b + a
+            a = c
+        }
+        return b
+    }
 }
 {% endhighlight %}
