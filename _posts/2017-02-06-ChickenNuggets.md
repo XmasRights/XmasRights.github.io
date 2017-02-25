@@ -1,9 +1,9 @@
 ---
 title: Chicken Nuggets
 ---
-In the interest of not waffling on for too long, the theme of this post is: "Just F*** Do It" (or JFDI). In [my last post](http://www.funccode.com/SearchTreeKit) I introduced to you [`SearchTreeKit`](https://github.com/XmasRights/SearchTreeKit), a simple way to find answers given a set of possible actions.
+In the interest of not waffling on for too long, the theme of this post is: "Just F*** Do It" (or JFDI).
 
-If you care at all about the implementation go have a read of my [`SearchTreeKit` post](http://www.funccode.com/SearchTreeKit), if you ain't got time for that, and just want to see how to use it: you've come to the right place.
+In [my last post](http://www.funccode.com/SearchTreeKit) I introduced to you [`SearchTreeKit`](https://github.com/XmasRights/SearchTreeKit), a simple way to find answers a set of possible actions. If you care at all about the implementation go have a read of my [`SearchTreeKit` post](http://www.funccode.com/SearchTreeKit), if you ain't got time for that, and just want to see how to use it: you've come to the right place.
 
 ## Chicken Nuggets, and Frobenius
 Once again, I'm writing a bit of Swift in response to something I saw on TV. On QI, Sandi Toksvig mentioned [Frobenius](https://en.wikipedia.org/wiki/Ferdinand_Georg_Frobenius), and his delightful method for solving specific types of infinite series. She explains it using McDonalds Chicken Nuggets, and the fact that you can only buy them in multiples of 6, 9 and 20. As a result, if you want to have your fill of exactly 43 nuggets without wasting a single one, you're out of luck; as there is no combination of orders that will give you that exact number. Anything higher than that, and you're golden.
@@ -20,6 +20,7 @@ One tool that will make everything look very sexy indeed is a `typealias`
 typealias Nuggets = SearchNode<Int>
 let start  = Nuggets(0)
 {% endhighlight %}
+`typealias` essentially just tells swift to substitute one type name for another, meaning we can do much less writing and explain everything in a much more descriptive way. I could quite easily use Ints for this, but we're talking about food here, if we can call a Nugget a Nugget, why not do just that? 😉
 
 ### Actions
 There are many ways to generate an Array of actions. I've opted for a function that creates the list and returns it, like so:
