@@ -1,5 +1,5 @@
 ---
-title: Using the Command Line
+title: Reading Command Line Arguments in Swift
 ---
 One thing I adore about `Swift` is that the answer to questions like:
 
