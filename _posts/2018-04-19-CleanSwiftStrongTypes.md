@@ -1,5 +1,5 @@
 ---
-title: Clean Swift - Types, & How to Use Them
+title: Clean Swift - Embracing Types
 ---
 
 Swift is a strongly typed language. This means seeing a particular type allows you to make some reassuring assumptions that you just don't get from your previous partners.
